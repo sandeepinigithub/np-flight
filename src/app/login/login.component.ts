@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
@@ -9,34 +9,18 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
-  private formSubmitAttempt: boolean;
+  email : string;
+  password : string;
+  userData:any= {
+    name: '',
+    email: '',
+    password: '',
+    repassword:''
+  };
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService
-  ) {}
+  constructor(){}
 
-  ngOnInit() {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-    
-  }
-
-  isFieldInvalid(field: string) {
-    // return (
-    //   (!this.form.get(field).valid && this.form.get(field).touched) ||
-    //   (this.form.get(field).untouched && this.formSubmitAttempt)
-    // );
-  }
-
-  onSubmit() {
-    if (this.form.valid) {
-      this.authService.login(this.form.value);
-    }
-    this.formSubmitAttempt = true;
-  }
+  ngOnInit(){}
+  
 
 }

@@ -3,10 +3,13 @@ mat-card {
   margin: 2em auto;
 }
 mat-form-field,
-mat-checkbox {
+mat-checkbox{
   width: 80%;
   display: block;
   margin: auto;
+}
+mat-checkbox{
+    margin-top: 16px;
 }
 mat-card-content {
   margin-top: 20px;
