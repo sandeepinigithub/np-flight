@@ -19,13 +19,16 @@ export class LoginComponent implements OnInit {
     repassword: ''
   };
 
-  constructor(private router : Router) { }
+  constructor(private router : Router ,private authService : AuthService) { }
 
   ngOnInit() { }
 
   signUp(data: any) {
     // console.log(data);
     localStorage.setItem('userData',JSON.stringify(data));
+    alert("You are registered ! Please signin");
+    this.router.navigate(['/']);
+
   }
   signIn(email : string , password:string){
     let temp = JSON.parse(localStorage.getItem('userData') || '{}');
@@ -36,6 +39,7 @@ export class LoginComponent implements OnInit {
       alert('Please enter correct password');
     if((email.valueOf() === temp.email.valueOf()) && (password.valueOf() === temp.password.valueOf())){
       this.router.navigate(['/']);
+      this.authService.setLogin(true);
 
     }
     

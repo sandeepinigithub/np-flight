@@ -17,6 +17,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatMenuModule} from '@angular/material/menu';
+
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTabsModule,
     MatCheckboxModule,
     FormsModule,
+    MatMenuModule,
+    SwiperModule
 
   ],
   providers: [],

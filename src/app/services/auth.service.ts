@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 
 export interface User {
   userName: string;
@@ -11,25 +10,19 @@ export interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn: boolean = false;
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
+  constructor(private router: Router) { }
+
+  setLogin(value:boolean) {
+    this.isLoggedIn = value;
   }
 
-  constructor(
-    private router: Router
-  ) {}
-
-  login(user: User) {
-    if (user.userName !== '' && user.password !== '' ) {
-      this.loggedIn.next(true);
-      this.router.navigate(['/']);
-    }
+  setLogout(value:boolean) {
+    this.isLoggedIn = value;
   }
 
-  logout() {
-    this.loggedIn.next(false);
-    this.router.navigate(['/login']);
+  getLogin() {
+    return this.isLoggedIn;
   }
 }
