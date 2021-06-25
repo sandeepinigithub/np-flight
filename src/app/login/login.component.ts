@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -9,18 +10,37 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  email : string;
-  password : string;
-  userData:any= {
+  email: string;
+  password: string;
+  userData: any = {
     name: '',
     email: '',
     password: '',
-    repassword:''
+    repassword: ''
   };
 
-  constructor(){}
+  constructor(private router : Router) { }
 
-  ngOnInit(){}
-  
+  ngOnInit() { }
+
+  signUp(data: any) {
+    // console.log(data);
+    localStorage.setItem('userData',JSON.stringify(data));
+  }
+  signIn(email : string , password:string){
+    let temp = JSON.parse(localStorage.getItem('userData') || '{}');
+    // console.log(temp);       
+    if(email.valueOf() !== temp.email.valueOf())
+      alert('Please enter correct email');
+    if(password.valueOf() !== temp.password.valueOf())
+      alert('Please enter correct password');
+    if((email.valueOf() === temp.email.valueOf()) && (password.valueOf() === temp.password.valueOf())){
+      this.router.navigate(['/']);
+
+    }
+    
+
+    
+  }
 
 }
