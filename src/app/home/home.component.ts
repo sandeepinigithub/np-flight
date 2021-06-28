@@ -8,6 +8,7 @@ import SwiperCore, {
   A11y,
   Autoplay
 } from 'swiper/core';
+import { FormControl } from '@angular/forms';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y,Autoplay]);
@@ -21,7 +22,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y,Autoplay]);
 export class HomeComponent implements OnInit {
   isLoggedIn: boolean = false;
   name: string = '';
-
+  
   constructor(private authService: AuthService) {
     // console.log(this.authService.getLogin());
     this.isLoggedIn = this.authService.getLogin();
@@ -32,13 +33,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  onSwiper(swiper: any) {
-    console.log(swiper);
-  }
-  onSlideChange() {
-    console.log('slide change');
   }
 
 }

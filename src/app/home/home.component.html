@@ -1,40 +1,104 @@
-<header>
-  <mat-toolbar color="primary">
-    <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>
-      NP Flight
-      <span class="material-icons">flight_takeoff</span>
-    </span>
-    <span class="header__spacer"></span>
-    <button mat-raised-button routerLink="/login" *ngIf="!isLoggedIn">
-      Log In/Sign Up
-    </button>
-    <button
-      mat-raised-button
-      [matMenuTriggerFor]="menu"
-      [title]="name"
-      *ngIf="isLoggedIn"
-    >
-      <span class="material-icons"> account_circle </span>{{ name }}
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item> Logout</button>
-    </mat-menu>
-  </mat-toolbar>
-</header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav class="sidenav" #sidenav [mode]="'over'">
+    <p>
+      <button mat-icon-button color="primary" (click)="sidenav.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </p>
+    <mat-nav-list>   
 
-<swiper
+      <mat-list-item routerLink="/" routerLinkActive="active">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <div class="sidenav-item">Home</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/" routerLinkActive="active">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <div class="sidenav-item">Profile</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/booking/" routerLinkActive="active">
+        <mat-icon mat-list-icon>book_online</mat-icon>
+        <div class="sidenav-item">Book and Manage</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/" routerLinkActive="active">
+        <mat-icon mat-list-icon>card_giftcard</mat-icon>
+        <div class="sidenav-item">Cashback & Offers</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/" routerLinkActive="active">
+        <mat-icon mat-list-icon>settings</mat-icon>
+        <div class="sidenav-item">Settings</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/" routerLinkActive="active">
+        <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+        <div class="sidenav-item">Your Accounts</div>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <header>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <div class="logo">
+          NP Flight
+          <span class="material-icons">flight_takeoff</span>
+        </div>
+
+        <span class="header__spacer"></span>
+        <button mat-raised-button routerLink="/login" *ngIf="!isLoggedIn">
+          Log In/Sign Up
+        </button>
+        <button
+          mat-raised-button
+          [matMenuTriggerFor]="menu"
+          [title]="name"
+          *ngIf="isLoggedIn"
+        >
+          <span class="material-icons"> account_circle </span>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Logout</button>
+        </mat-menu>
+      </mat-toolbar>
+    </header>
+
+    <swiper
       [slidesPerView]="1"
       [spaceBetween]=""
-      (swiper)="onSwiper($event)"
-      (slideChange)="onSlideChange()"
       [navigation]="true"
       [pagination]="{ clickable: true }"
       [autoplay]="true"
     >
-      <ng-template swiperSlide><img height="300px" width="100%" src="https://img.freepik.com/free-vector/special-offer-sale-discount-banner_180786-46.jpg?size=626&ext=jpg" alt=""></ng-template>
-      <ng-template swiperSlide><img height="300px" width="100%" src="https://img.freepik.com/free-vector/special-offer-sale-discount-banner_180786-46.jpg?size=626&ext=jpg" alt=""></ng-template>
-      <ng-template swiperSlide><img height="300px" width="100%" src="https://img.freepik.com/free-vector/special-offer-sale-discount-banner_180786-46.jpg?size=626&ext=jpg" alt=""></ng-template>
-    </swiper> 
+      <ng-template swiperSlide
+        ><img
+          height="300px"
+          width="100%"
+          src="https://img.freepik.com/free-vector/special-offer-sale-discount-banner_180786-46.jpg?size=626&ext=jpg"
+          alt=""
+      /></ng-template>
+      <ng-template swiperSlide
+        ><img
+          height="300px"
+          width="100%"
+          src="https://gos3.ibcdn.com/img-1613303670.jpg"
+          alt=""
+      /></ng-template>
+      <ng-template swiperSlide
+        ><img
+          height="300px"
+          width="100%"
+          src="https://img.freepik.com/free-vector/special-offer-sale-discount-banner_180786-46.jpg?size=626&ext=jpg"
+          alt=""
+      /></ng-template>
+    </swiper>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

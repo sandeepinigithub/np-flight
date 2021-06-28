@@ -1,4 +1,22 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
 .header__spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
+.sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.sidenav{
+  padding: 10px;
+}
+.logo{
+  cursor: pointer;
+}
 
